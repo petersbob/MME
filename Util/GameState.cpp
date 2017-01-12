@@ -3,8 +3,13 @@
 #include <cstdlib>
 #include <cmath>
 
+#include <iostream>
+
 #include "GameState.h"
 #include "Constants.h"
+
+#include "../osc/OscOutboundPacketStream.h"
+#include "../ip/UdpSocket.h"
 
 GameState* GameState::m_instance = NULL;
 
@@ -1621,4 +1626,21 @@ double GameState::calculateDoubleJumpHeight(CHARACTER character, double initSpee
         height += tick;
     }
     return height;
+}
+
+bool GameState::shareData(GameMemory* gm)
+{
+
+  UdpTransmitSocket transmitSocket( IpEndpointName( ADDRESS, PORT ) );
+    
+  char buffer[OUTPUT_BUFFER_SIZE];
+  osc::OutboundPacketStream p( buffer, OUTPUT_BUFFER_SIZE );
+    
+  p << osc::BeginBundleImmediate
+    << osc::BeginMessage( "/test1" ) 
+    << (int)gm->player_one_character << (float)gm->player_one_x<< "hello" << osc::EndMessage
+    << osc::EndBundle;
+    
+  transmitSocket.Send( p.Data(), p.Size() );
+  return true;
 }

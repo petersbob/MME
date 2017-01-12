@@ -11,7 +11,7 @@ UTIL=Util/*.cpp
 
 EXECUTABLE=smashbot
 
-all: goals strats tactics chains main util
+all: main util
 	$(CC) $(LDFLAGS) *.o -o $(EXECUTABLE)
 
 .PHONY: main

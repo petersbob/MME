@@ -1,6 +1,11 @@
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
 
+#define ADDRESS "127.0.0.1"
+#define PORT 7000
+
+#define OUTPUT_BUFFER_SIZE 2014
+
 #include <sys/types.h>
 
 struct GameMemory
@@ -375,6 +380,9 @@ public:
 
     //How high will the character fly upwards, given the initial speed?
     double calculateDoubleJumpHeight(CHARACTER character, double initSpeed);
+
+    // write the game data to a file
+    bool shareData(GameMemory* gm);
 
     GameMemory *m_memory;
     double m_rollStartPosition;

@@ -4,3 +4,5 @@ smashbot
 *.d
 *~
 Logs/*
+
+chuck_test/*
