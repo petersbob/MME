@@ -120,7 +120,6 @@ int main(int argc, char *argv[])
     MemoryWatcher *watcher = new MemoryWatcher();
     uint last_frame = 0;
     //Get our goal
-    Goal *goal = NULL;
     MENU current_menu;
 
     //Main frame loop
@@ -149,3 +148,4 @@ int main(int argc, char *argv[])
 
     return EXIT_SUCCESS;
 }
+

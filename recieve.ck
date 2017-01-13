@@ -6,6 +6,8 @@ OscMsg msg;
 oin.addAddress( "/test1" );
 // Our synthesizer to be controlled by sender process
 Rhodey piano => dac;
+SinOsc a => dac;
+.5 => a.gain;
 // Infinite loop to wait for messages and play notes
 while (true)
 {
@@ -17,10 +19,11 @@ while (true)
    msg.getInt(0) => int note;
    msg.getFloat(1) => float velocity;
    msg.getString(2) => string howdy;
+   velocity*3 + 400 => a.freq;
    // use them to make music
-   Std.mtof(note) => piano.freq;
-   velocity => piano.gain;
-   velocity => piano.noteOn;
+   //Std.mtof(note) => piano.freq;
+   //velocity => piano.gain;
+   //velocity => piano.noteOn;
    // print it all out
    <<< howdy, note, velocity >>>;
  }

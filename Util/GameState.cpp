@@ -1638,7 +1638,7 @@ bool GameState::shareData(GameMemory* gm)
     
   p << osc::BeginBundleImmediate
     << osc::BeginMessage( "/test1" ) 
-    << (int)gm->player_one_character << (float)gm->player_one_x<< "hello" << osc::EndMessage
+    << (int)gm->player_one_character << (float)gm->player_one_y<< "hello" << osc::EndMessage
     << osc::EndBundle;
     
   transmitSocket.Send( p.Data(), p.Size() );
