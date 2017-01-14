@@ -1637,9 +1637,15 @@ bool GameState::shareData(GameMemory* gm)
   osc::OutboundPacketStream p( buffer, OUTPUT_BUFFER_SIZE );
     
   p << osc::BeginBundleImmediate
-    << osc::BeginMessage( "/test1" ) 
-    << (int)gm->player_one_character << (float)gm->player_one_y<< "hello" << osc::EndMessage
+    << osc::BeginMessage( "/playerInfo" ) 
+        << "player_one_y" << (float)gm->player_one_y << osc::EndMessage
+    << osc::BeginMessage( "/playerInfo" ) 
+        << "player_one_hitlag_frames_left" << (int)gm->player_one_hitlag_frames_left << osc::EndMessage
+    << osc::BeginMessage( "/playerInfo" ) 
+        << "player_one_stock" << (int)gm->player_one_stock << osc::EndMessage
     << osc::EndBundle;
+
+    std::cout << "Player_one_stock " << gm->player_one_stock << std::endl;
     
   transmitSocket.Send( p.Data(), p.Size() );
   return true;

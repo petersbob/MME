@@ -125,10 +125,11 @@ int main(int argc, char *argv[])
     //Main frame loop
     for(;;)
     {
-      state->shareData(state->m_memory);
+      
         //If we get a new frame, process it. Otherwise, keep reading memory
         if(!watcher->ReadMemory())
         {
+            state->shareData(state->m_memory);
             continue;
         }
 
