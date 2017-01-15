@@ -1637,15 +1637,24 @@ bool GameState::shareData(GameMemory* gm)
   osc::OutboundPacketStream p( buffer, OUTPUT_BUFFER_SIZE );
     
   p << osc::BeginBundleImmediate
-    << osc::BeginMessage( "/playerInfo" ) 
-        << "player_one_y" << (float)gm->player_one_y << osc::EndMessage
-    << osc::BeginMessage( "/playerInfo" ) 
-        << "player_one_hitlag_frames_left" << (int)gm->player_one_hitlag_frames_left << osc::EndMessage
-    << osc::BeginMessage( "/playerInfo" ) 
-        << "player_one_stock" << (int)gm->player_one_stock << osc::EndMessage
+  //player one messages
+    << osc::BeginMessage( "/player_one_info" ) 
+        << "player_y" << (float)gm->player_one_y << osc::EndMessage
+    << osc::BeginMessage( "/player_one_info" ) 
+        << "player_percent" << (int)gm->player_one_percent << osc::EndMessage
+    << osc::BeginMessage( "/player_one_info" ) 
+        << "player_stock" << (int)gm->player_one_stock << osc::EndMessage
+    << osc::BeginMessage( "/player_one_info" ) 
+        << "player_jumps" << (int)gm->player_one_jumps_left << osc::EndMessage
+    //player two messages
+        << osc::BeginMessage( "/player_two_info" ) 
+        << "player_y" << (float)gm->player_two_y << osc::EndMessage
+    << osc::BeginMessage( "/player_two_info" ) 
+        << "player_percent" << (int)gm->player_two_percent << osc::EndMessage
+    << osc::BeginMessage( "/player_two_info" ) 
+        << "player_stock" << (int)gm->player_two_stock << osc::EndMessage
     << osc::EndBundle;
 
-    std::cout << "Player_one_stock " << gm->player_one_stock << std::endl;
     
   transmitSocket.Send( p.Data(), p.Size() );
   return true;
