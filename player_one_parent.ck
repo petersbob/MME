@@ -2,16 +2,16 @@ fun void boing(float y_position)
 {
     SinOsc osc => ADSR e => dac;
     SinOsc lfo;
-    
+
     e.set(100::ms, 100::ms, .3, 500::ms);
 
     200.0 + y_position * 5 => float freq;
     0.4 => float gain;
     float gain_scale;
     float amp_mod;
-    15.0 => lfo.freq; 
+    15.0 => lfo.freq;
     lfo => blackhole;
-    
+
     float theValue;
     for (0 => int i; i < 800; i++)
     {
@@ -22,19 +22,20 @@ fun void boing(float y_position)
         gain - .001 => gain;
         gain => osc.gain;
         }
-        
-        lfo.last() => amp_mod;   
-        (amp_mod + 1) / 2 => amp_mod;   
+
+        lfo.last() => amp_mod;
+        (amp_mod + 1) / 2 => amp_mod;
         amp_mod => gain_scale;
         gain_scale * gain => osc.gain;
-        
+
         e.keyOn();
         ms => now;
         e.keyOff();
     }
 }
-SinOsc a => dac;
-.05 => a.gain;
+SinOsc a => JCRev r => dac;
+.5 => r.mix;
+
 //variables used with every frame update
 int player_one_old_stock;
 int player_one_old_percent;
@@ -63,23 +64,31 @@ while (true)
         if (dataTitle == "player_y")
         {
             player_one_msg.getFloat(1) => player_one_height;
-            player_one_height + 400 => a.freq;
+            if (player_one_height > 5)
+            {
+              .1 => a.gain;
+              player_one_height + 400 => a.freq;
+            }
+            else
+            {
+              0 => a.gain;
+            }
         }
         if (dataTitle == "player_percent" )
         {
             int newPercent;
-            player_one_msg.getInt(1) => newPercent; 
+            player_one_msg.getInt(1) => newPercent;
             if (newPercent != player_one_old_percent)
             {
                 Machine.add( "Hit.ck" );
-            }  
+            }
             newPercent => player_one_old_percent;
         }
         if (dataTitle == "player_stock")
         {
             int newStock;
             player_one_msg.getInt(1) => newStock;
-            if (player_one_old_stock - 1 == newStock) 
+            if (player_one_old_stock - 1 == newStock)
             {
                 Machine.add( "Death.ck" );
             }
@@ -88,12 +97,12 @@ while (true)
         if (dataTitle == "player_jumps")
         {
             int new_jumps;
-            player_one_msg.getInt(1) => new_jumps; 
+            player_one_msg.getInt(1) => new_jumps;
             if (new_jumps != player_one_old_jumps && new_jumps <2)
             {
                 spork ~ boing(player_one_height);
-            }  
+            }
             new_jumps => player_one_old_jumps;
-        } 
-    }  
+        }
+    }
 }
