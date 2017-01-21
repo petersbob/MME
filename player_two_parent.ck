@@ -1,14 +1,51 @@
-int player_two_old_stock;
-int player_two_old_percent;
-float player_two_height;
-
+fun void boing(float y_position, float x_position)
+{
+    SinOsc osc => ADSR e => Pan2 p => dac;
+    SinOsc lfo;
+    
+    e.set(100::ms, 100::ms, .3, 500::ms);
+    
+    200.0 + y_position * 5 => float freq;
+    0.4 => float gain;
+    float gain_scale;
+    float amp_mod;
+    15.0 => lfo.freq;
+    lfo => blackhole;
+    
+    (x_position / 100) => p.pan;
+    float theValue;
+    for (0 => int i; i < 800; i++)
+    {
+        freq + 1.0 => freq;
+        freq => osc.freq;
+        if (gain > .01)
+        {
+            gain - .001 => gain;
+            gain => osc.gain;
+        }
+        
+        lfo.last() => amp_mod;
+        (amp_mod + 1) / 2 => amp_mod;
+        amp_mod => gain_scale;
+        gain_scale * gain => osc.gain;
+        
+        e.keyOn();
+        ms => now;
+        e.keyOff();
+    }
+}
 TriOsc a => JCRev r => dac;
 .5 => r.mix;
 
-OscMsg player_one_msg;
+int player_two_old_stock;
+int player_two_old_percent;
+int player_two_old_jumps;
+float player_two_height_pitch;
+float player_two_height;
+float player_two_x;
+
 OscMsg player_two_msg;
 
-int hitLagFrames;
 // Make a receiver, set port#, set up to listen for event
 
 OscIn player_two_oin;
@@ -29,14 +66,15 @@ while (true)
         if (dataTitle == "player_y")
         {
             player_two_msg.getFloat(1) => player_two_height;
+            Math.ceil(player_two_height/10) * 50 => player_two_height_pitch;
             if (player_two_height > 5)
             {
-              .1 => a.gain;
-              player_two_height + 400 => a.freq;
+                .1 => a.gain;
+                player_two_height_pitch + 400 => a.freq;
             }
             else
             {
-              0 => a.gain;
+                0 => a.gain;
             }
         }
         if (dataTitle == "player_percent" )
@@ -58,6 +96,21 @@ while (true)
                 Machine.add( "Death.ck" );
             }
             newStock => player_two_old_stock;
+        }
+        if (dataTitle == "player_x")
+        {
+            player_two_msg.getFloat(1) => player_two_x;
+            
+        }
+        if (dataTitle == "player_jumps")
+        {
+            int new_jumps;
+            player_two_msg.getInt(1) => new_jumps;
+            if (new_jumps != player_two_old_jumps && new_jumps <2)
+            {
+                spork ~ boing(player_two_height, player_two_x);
+            }
+            new_jumps => player_two_old_jumps;
         }
     }
 }

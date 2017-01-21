@@ -1641,13 +1641,16 @@ bool GameState::shareData(GameMemory* gm)
     << osc::BeginMessage( "/player_one_info" )
         << "player_y" << (float)gm->player_one_y << osc::EndMessage
     << osc::BeginMessage( "/player_one_info" )
+        << "player_x" << (float)gm->player_one_x << osc::EndMessage
+    << osc::BeginMessage( "/player_one_info" )
         << "player_percent" << (int)gm->player_one_percent << osc::EndMessage
     << osc::BeginMessage( "/player_one_info" )
         << "player_stock" << (int)gm->player_one_stock << osc::EndMessage
     << osc::BeginMessage( "/player_one_info" )
         << "player_jumps" << (int)gm->player_one_jumps_left << osc::EndMessage
+
     //player two messages
-        << osc::BeginMessage( "/player_two_info" )
+    << osc::BeginMessage( "/player_two_info" )
         << "player_y" << (float)gm->player_two_y << osc::EndMessage
     << osc::BeginMessage( "/player_two_info" )
         << "player_percent" << (int)gm->player_two_percent << osc::EndMessage

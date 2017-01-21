@@ -1,6 +1,6 @@
-fun void boing(float y_position)
+fun void boing(float y_position, float x_position)
 {
-    SinOsc osc => ADSR e => dac;
+    SinOsc osc => ADSR e => Pan2 p => dac;
     SinOsc lfo;
 
     e.set(100::ms, 100::ms, .3, 500::ms);
@@ -12,6 +12,7 @@ fun void boing(float y_position)
     15.0 => lfo.freq;
     lfo => blackhole;
 
+    (x_position / 100) => p.pan;
     float theValue;
     for (0 => int i; i < 800; i++)
     {
@@ -33,14 +34,16 @@ fun void boing(float y_position)
         e.keyOff();
     }
 }
-SinOsc a => JCRev r => dac;
+TriOsc a => JCRev r => dac;
 .5 => r.mix;
 
 //variables used with every frame update
 int player_one_old_stock;
 int player_one_old_percent;
 int player_one_old_jumps;
+float player_one_height_pitch;
 float player_one_height;
+float player_one_x;
 
 OscMsg player_one_msg;
 
@@ -64,10 +67,11 @@ while (true)
         if (dataTitle == "player_y")
         {
             player_one_msg.getFloat(1) => player_one_height;
+            Math.ceil(player_one_height/10) * 50 => player_one_height_pitch;
             if (player_one_height > 5)
             {
               .1 => a.gain;
-              player_one_height + 400 => a.freq;
+              player_one_height_pitch + 400 => a.freq;
             }
             else
             {
@@ -94,15 +98,21 @@ while (true)
             }
             newStock => player_one_old_stock;
         }
+        if (dataTitle == "player_x")
+        {
+            player_one_msg.getFloat(1) => player_one_x;
+
+        }
         if (dataTitle == "player_jumps")
         {
             int new_jumps;
             player_one_msg.getInt(1) => new_jumps;
             if (new_jumps != player_one_old_jumps && new_jumps <2)
             {
-                spork ~ boing(player_one_height);
+                spork ~ boing(player_one_height, player_one_x);
             }
             new_jumps => player_one_old_jumps;
         }
+        
     }
 }
