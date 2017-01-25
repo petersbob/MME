@@ -57,7 +57,9 @@ If you are having trouble installing, check out the dhuck documentation: [http:/
 
 ###I have that stuff, now what?
 
-+ Download or clone the project to your computer.
++ Download or clone the project to your computer 
+
+(the "smashbot" branch is similar to "master" but also includes the smashbot ai)
 + Inside of the project folder, run
 ```
 make
