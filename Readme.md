@@ -19,7 +19,9 @@ And much more.
 
 ###How was it built?
 
-It is built using C++ and [ChucK](http://chuck.cs.princeton.edu), a programming language created for "real-time sound synthesis and music creation." 
+It is built using C++ and [ChucK](http://chuck.cs.princeton.edu)
+
+![ChucK logo] (http://chuck.cs.princeton.edu/doc/images/chuck_logo3.jpg)
 
 The two languages communicate over the [Open Sound Control (OSC)] (http://opensoundcontrol.org/) protocol.
 
@@ -29,16 +31,22 @@ It was built off of the work done by github user altf4 on his [SmashBot] (https:
 
 1. A mac or linux computer. We hope to be able to expand to windows sometime in the future.
 2. Install chuck.
+
 Mac: you can install it with [homebrew](http://brew.sh/)
-    ```brew install chuck
-    ```
+```
+brew install chuck
+```
+
 Linux: your package manager may have a copy
-    + fedora
-    ```dnf install chuck
-    ```
-    +ubuntu
-    ```apt-get isntall chuck
-    ```
++ fedora
+```
+dnf install chuck
+```
++ ubuntu
+```
+apt-get install chuck
+```
+If you are having trouble installing, check out the dhuck documentation: [http://chuck.cs.princeton.edu/doc/build/] (http://chuck.cs.princeton.edu/doc/build/).
 
 3. A copy of the [Dolphin](dolphin-emu.org) wii/gamecube emulator, version 5.0 or later.
 4. A copy of Melee v1.02 NTSC.
@@ -50,13 +58,16 @@ Linux: your package manager may have a copy
 
 1. Download or clone the project to your computer.
 2. Inside of the project folder, run
-```make
+```
+make
 ```
 3. Then, run the MME executable
-```./mme
+```
+./mme
 ```
 4. And then the ChucK program
-```chuck main.ck
+```
+chuck main.ck
 ```
 5. And start up Melee and you should start hearing the new sound effects
 
