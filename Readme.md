@@ -49,7 +49,7 @@ Linux: your package manager may have a copy
   
 If you are having trouble installing, check out the dhuck documentation: [http://chuck.cs.princeton.edu/doc/build/] (http://chuck.cs.princeton.edu/doc/build/).
 
-+ A copy of the [Dolphin](dolphin-emu.org) wii/gamecube emulator, version 5.0 or later.
++ A copy of the [Dolphin](https://dolphin-emu.org/) wii/gamecube emulator, version 5.0 or later.
 + A copy of Melee v1.02 NTSC.
 + Apply the Melee Netplay COmmunity Settings Gecko Code. Right click on the iso -> properties -> Gecko Codes -> Netplay Community Settings.
 + Enable cheats in DOlphin. Config -> General -> Enable Cheats
