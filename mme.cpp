@@ -11,9 +11,6 @@
 #include <string>
 #include <time.h>
 
-#include "Goals/KillOpponent.h"
-#include "Goals/NavigateMenu.h"
-
 #include "Util/GameState.h"
 #include "Util/MemoryWatcher.h"
 #include "Util/Logger.h"
@@ -63,9 +60,6 @@ void signal_handler(int signal)
 {
     std::string logpath = "Logs";
     struct stat buffer;
-
-    Controller *controller = Controller::Instance();
-    controller->emptyInput();
 
     if(isDebug)
     {
@@ -119,7 +113,7 @@ int main(int argc, char *argv[])
 
     MemoryWatcher *watcher = new MemoryWatcher();
     uint last_frame = 0;
-    //Get our goal
+
     MENU current_menu;
 
     //Main frame loop
