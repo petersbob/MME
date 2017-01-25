@@ -3,17 +3,17 @@ CFLAGS=-g -c -Wall  -std=gnu++11
 OSCFLAGS=-Wall -Wextra -O3 -I. -DOSC_DETECTENDIANESS -c 
 LDFLAGS=-g -Wall -std=gnu++11
 
-SOURCES=smashbot.cpp
+SOURCES=mme.cpp
 UTIL=Util/*.cpp
-OSC=osc/OscTypes.cpp osc/OscOutboundPacketStream.cpp
+OSC=Osc/OscTypes.cpp Osc/OscOutboundPacketStream.cpp
 OSCOBJECTS=$(OSC:.cpp=.o)
-IP=ip/posix/UdpSocket.cpp ip/IpEndpointName.cpp ip/posix/NetworkingUtils.cpp
+IP=Ip/posix/UdpSocket.cpp Ip/IpEndpointName.cpp Ip/posix/NetworkingUtils.cpp
 IPOBJECTS=$(IP:.cpp=.o)
 
-EXECUTABLE=smashbot
+EXECUTABLE=mme
 
 all: osc ip util main
-	g++ -o smashbot *.o
+	g++ -o $(EXECUTABLE) *.o
 
 .PHONY: main
 .PHONY: util
@@ -33,4 +33,4 @@ ip:
 	$(CC) $(OSCFLAGS) $(IP)
 
 clean:
-	rm -f *.o */*.o *.d */*.d smashbot
+	rm -f *.o */*.o *.d */*.d $(EXECUTABLE)
