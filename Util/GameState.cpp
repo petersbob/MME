@@ -8,8 +8,8 @@
 #include "GameState.h"
 #include "Constants.h"
 
-#include "../osc/OscOutboundPacketStream.h"
-#include "../ip/UdpSocket.h"
+#include "../Osc/OscOutboundPacketStream.h"
+#include "../Ip/UdpSocket.h"
 
 GameState* GameState::m_instance = NULL;
 
