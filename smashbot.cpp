@@ -120,16 +120,15 @@ int main(int argc, char *argv[])
     MemoryWatcher *watcher = new MemoryWatcher();
     uint last_frame = 0;
     //Get our goal
+    Goal *goal = NULL;
     MENU current_menu;
 
     //Main frame loop
     for(;;)
     {
-      
         //If we get a new frame, process it. Otherwise, keep reading memory
         if(!watcher->ReadMemory())
         {
-            state->shareData(state->m_memory);
             continue;
         }
 
@@ -143,10 +142,49 @@ int main(int argc, char *argv[])
                 logger->Log(INFO, "FRAME MISSED");
             }
             last_frame = state->m_memory->frame;
+
+            //If we're in a match, play the match!
+            if(state->m_memory->menu_state == IN_GAME)
+            {
+                if(goal == NULL )
+                {
+                    goal = new KillOpponent();
+                }
+                if(typeid(*goal) != typeid(KillOpponent))
+                {
+                    delete goal;
+                    goal = new KillOpponent();
+                }
+                goal->Strategize();
+            }
+            //If we're in a menu, then let's navigate the menu
+            else if(state->m_memory->menu_state == CHARACTER_SELECT ||
+                state->m_memory->menu_state == STAGE_SELECT ||
+                state->m_memory->menu_state == POSTGAME_SCORES)
+            {
+                if(goal == NULL )
+                {
+                    goal = new NavigateMenu();
+                }
+                if(typeid(*goal) != typeid(NavigateMenu))
+                {
+                    delete goal;
+                    goal = new NavigateMenu();
+                }
+                goal->Strategize();
+            }
+        }
+        //If the menu changed
+        else if(current_menu != state->m_memory->menu_state)
+        {
+            last_frame = 1;
+            current_menu = (MENU)state->m_memory->menu_state;
         }
 
+        Controller::Instance()->flush();
+        logger->SetGoal(goal);
+        logger->LogFrame();
     }
 
     return EXIT_SUCCESS;
 }
-
