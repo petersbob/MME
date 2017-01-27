@@ -76,4 +76,4 @@ chuck main.ck
 + The currently supported character and stage for SmashBot is Marth and Final Destination.
 
 ### I can't get it to work!
-Musical Melee is still a young project and will likely be changing a quite often. Please be patient as we update and fix issues.
+Musical Melee is still a young project and will likely be changing quite often. Please be patient as we update and fix issues.
