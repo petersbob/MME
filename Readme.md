@@ -5,16 +5,14 @@
 ##What does it do?
 
 This project allows you to customize the sounds coming out of Super Smash Brothers Melee. Information about what is happening on screen is pulled out from memory.
+
 This data includes:
-+ Player X position
-+ Player Y position
-+ Player stock
-+ Player percent
++ Character X position
++ Character Y position
++ Character stocks remaining
++ Character percent
 + Current stage
-+ Player jumps left
-+ Facing direction
-+ Whether a player is charging
-+ Whether a player is invulnerable
++ jumps left
 And much more.
 
 ###How was it built?
@@ -27,10 +25,10 @@ The two languages communicate over the [Open Sound Control (OSC)] (http://openso
 
 It was built off of the work done by github user altf4 on his [SmashBot] (https://github.com/altf4/SmashBot) AI project.
 
-###How what do I need to use it?
+###What do I need to use it?
 
-+ A mac or linux computer. We hope to be able to expand to windows sometime in the future.
-+ Install chuck.
++ A mac or linux computer. We hope to be able to expand to Windows sometime in the future.
++ ChucK, a free audio programming language.
 
 Mac: you can install it with [homebrew](http://brew.sh/)
 ```
@@ -47,17 +45,17 @@ Linux: your package manager may have a copy
   apt-get install chuck
   ```
   
-If you are having trouble installing, check out the dhuck documentation: [http://chuck.cs.princeton.edu/doc/build/] (http://chuck.cs.princeton.edu/doc/build/).
+If you are having trouble installing, check out the ChucK documentation: [http://chuck.cs.princeton.edu/doc/build/] (http://chuck.cs.princeton.edu/doc/build/).
 
 + A copy of the [Dolphin](https://dolphin-emu.org/) wii/gamecube emulator, version 5.0 or later.
 + A copy of Melee v1.02 NTSC.
-+ Apply the Melee Netplay COmmunity Settings Gecko Code. Right click on the iso -> properties -> Gecko Codes -> Netplay Community Settings.
++ Apply the Melee Netplay Community Settings Gecko Code. Right click on the iso -> properties -> Gecko Codes -> Netplay Community Settings.
 + Enable cheats in DOlphin. Config -> General -> Enable Cheats
 + Lastly, you may want a gamecube controller and an adapter for use on your computer.
 
 ###I have that stuff, now what?
 
-+ Download or clone the project to your computer 
++ Download or clone this project to your computer. 
 
 (the "smashbot" branch is similar to "master" but also includes the smashbot ai)
 + Inside of the project folder, run
