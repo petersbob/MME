@@ -80,7 +80,7 @@ while (true)
             player_one_msg.getInt(1) => newPercent;
             if (newPercent != player_one_old_percent)
             {
-                Machine.add( "Hit.ck" );
+                Machine.add( "Chuck/Hit.ck" );
             }
             newPercent => player_one_old_percent;
         }
@@ -90,7 +90,7 @@ while (true)
             player_one_msg.getInt(1) => newStock;
             if (player_one_old_stock - 1 == newStock)
             {
-                Machine.add( "Death.ck" );
+                Machine.add( "Chuck/Death.ck" );
             }
             newStock => player_one_old_stock;
         }
