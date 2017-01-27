@@ -20,7 +20,7 @@ And much more.
 
 It is built using C++ and [ChucK](http://chuck.cs.princeton.edu)
 
-![ChucK logo] (http://chuck.cs.princeton.edu/doc/images/chuck_logo3.jpg)
+![ChucK logo] (images/chuck_logo3.jpg)
 
 The two languages communicate over the [Open Sound Control (OSC)] (http://opensoundcontrol.org/) protocol.
 
