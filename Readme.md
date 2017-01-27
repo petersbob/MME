@@ -75,4 +75,4 @@ chuck main.ck
 + Start up Melee and the sound effects will kick in once you start a fight.
 
 ### I can't get it to work!
-Musical Melee is still a young project and will likely be changing a quite often. Please be patient as we update and fix issues.
+Musical Melee is still a young project and will likely be changing quite often. Please be patient as we update and fix issues.
