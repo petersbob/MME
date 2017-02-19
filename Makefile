@@ -5,7 +5,7 @@ LDFLAGS=-g -Wall -std=gnu++11
 
 SOURCES=mme.cpp
 UTIL=Util/*.cpp
-OSC=Osc/OscTypes.cpp Osc/OscOutboundPacketStream.cpp
+OSC=Osc/OscTypes.cpp Osc/OscOutboundPacketStream.cpp Osc/OscReceivedElements.cpp Osc/OscPrintReceivedElements.cpp
 OSCOBJECTS=$(OSC:.cpp=.o)
 IP=Ip/posix/UdpSocket.cpp Ip/IpEndpointName.cpp Ip/posix/NetworkingUtils.cpp
 IPOBJECTS=$(IP:.cpp=.o)

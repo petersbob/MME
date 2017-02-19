@@ -383,6 +383,7 @@ public:
 
     // write the game data to a file
     bool shareData(GameMemory* gm);
+    bool listen(GameMemory* gm);
 
     GameMemory *m_memory;
     double m_rollStartPosition;

@@ -7,8 +7,11 @@
 
 #include "GameState.h"
 #include "Constants.h"
+#include "ExamplePacketListener.h"
 
 #include "../Osc/OscOutboundPacketStream.h"
+#include "../Osc/OscReceivedElements.h"
+#include "../Osc/OscPacketListener.h"
 #include "../Ip/UdpSocket.h"
 
 GameState* GameState::m_instance = NULL;
@@ -1658,4 +1661,17 @@ bool GameState::shareData(GameMemory* gm)
 
   transmitSocket.Send( p.Data(), p.Size() );
   return true;
+}
+
+bool GameState::listen(GameMemory* gm)
+{
+  ExamplePacketListener listener;
+  UdpListeningReceiveSocket s(
+			      IpEndpointName( IpEndpointName::ANY_ADDRESS, PORT ),
+			      &listener );
+
+  std::cout << "press ctrl-c to end\n";
+
+  s.RunUntilSigInt();
+
 }
