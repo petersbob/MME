@@ -1642,20 +1642,39 @@ bool GameState::shareData(GameMemory* gm)
   p << osc::BeginBundleImmediate
   //player one messages
     << osc::BeginMessage( "/player_one_info" )
-        << "player_y" << (float)gm->player_one_y << osc::EndMessage
+        << "player_stock" << (int)gm->player_one_stock << osc::EndMessage
     << osc::BeginMessage( "/player_one_info" )
         << "player_percent" << (int)gm->player_one_percent << osc::EndMessage
     << osc::BeginMessage( "/player_one_info" )
-        << "player_stock" << (int)gm->player_one_stock << osc::EndMessage
+        << "player_on_ground" << (bool)gm->player_one_on_ground << osc::EndMessage
     << osc::BeginMessage( "/player_one_info" )
-        << "player_jumps" << (int)gm->player_one_jumps_left << osc::EndMessage
+        << "player_facing" << (bool)gm->player_one_facing << osc::EndMessage
+    << osc::BeginMessage( "/player_one_info" )
+        << "player_charging_smash" << (bool)gm->player_one_charging_smash << osc::EndMessage         
+    << osc::BeginMessage( "/player_one_info" )
+        << "player_x" << (float)gm->player_one_x << osc::EndMessage
+    << osc::BeginMessage( "/player_one_info" )
+        << "player_y" << (float)gm->player_one_y << osc::EndMessage        
+    << osc::BeginMessage( "/player_one_info" )
+        << "player_jumps" << (int)gm->player_one_jumps_left << osc::EndMessage     
+
     //player two messages
-        << osc::BeginMessage( "/player_two_info" )
-        << "player_y" << (float)gm->player_two_y << osc::EndMessage
+    << osc::BeginMessage( "/player_two_info" )
+        << "player_stock" << (int)gm->player_two_stock << osc::EndMessage
     << osc::BeginMessage( "/player_two_info" )
         << "player_percent" << (int)gm->player_two_percent << osc::EndMessage
     << osc::BeginMessage( "/player_two_info" )
-        << "player_stock" << (int)gm->player_two_stock << osc::EndMessage
+        << "player_on_ground" << (bool)gm->player_two_on_ground << osc::EndMessage
+    << osc::BeginMessage( "/player_two_info" )
+        << "player_facing" << (bool)gm->player_two_facing << osc::EndMessage
+    << osc::BeginMessage( "/player_two_info" )
+        << "player_charging_smash" << (bool)gm->player_two_charging_smash << osc::EndMessage         
+    << osc::BeginMessage( "/player_two_info" )
+        << "player_x" << (float)gm->player_two_x << osc::EndMessage
+    << osc::BeginMessage( "/player_two_info" )
+        << "player_y" << (float)gm->player_two_y << osc::EndMessage        
+    << osc::BeginMessage( "/player_two_info" )
+        << "player_jumps" << (int)gm->player_two_jumps_left << osc::EndMessage   
     << osc::EndBundle;
 
 

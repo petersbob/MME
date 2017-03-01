@@ -1,0 +1,55 @@
+#N canvas 10 53 641 608 10;
+#X declare -lib mrpeach;
+#X obj 16 14 import mrpeach;
+#X obj 18 80 unpackOSC;
+#X obj 18 126 routeOSC /player_one_info /player_two_info;
+#X floatatom 142 230 5 0 0 0 - - -;
+#X floatatom 181 230 5 0 0 0 - - -;
+#X floatatom 220 230 5 0 0 0 - - -;
+#X msg 119 14 status;
+#X obj 18 52 udpreceive 127.0.0.1 7001;
+#X text 184 51 changed port here \, gamestate.h \, and in utils/examplepacketlistener.h
+to prevent interference with chuck while its still included;
+#X text 441 283 originally i was thinking that the strings you were
+talking about were part of the osc address. use regular route for this
+part instead because the strings are part of the message not the address
+\, which are followed by ints and floats represented in the number
+boxes;
+#X floatatom 260 230 5 0 0 0 - - -;
+#X floatatom 299 230 5 0 0 0 - - -;
+#X floatatom 338 230 5 0 0 0 - - -;
+#X floatatom 378 230 5 0 0 0 - - -;
+#X floatatom 417 230 5 0 0 0 - - -;
+#X obj 142 162 route player_stock player_percent player_on_ground player_facing
+player_charging_smash player_x player_y player_jumps;
+#X floatatom 18 330 5 0 0 0 - - -;
+#X floatatom 57 330 5 0 0 0 - - -;
+#X floatatom 96 330 5 0 0 0 - - -;
+#X floatatom 136 330 5 0 0 0 - - -;
+#X floatatom 175 330 5 0 0 0 - - -;
+#X floatatom 214 330 5 0 0 0 - - -;
+#X floatatom 254 330 5 0 0 0 - - -;
+#X floatatom 293 330 5 0 0 0 - - -;
+#X obj 18 262 route player_stock player_percent player_on_ground player_facing
+player_charging_smash player_x player_y player_jumps;
+#X connect 1 0 2 0;
+#X connect 2 0 24 0;
+#X connect 2 1 15 0;
+#X connect 6 0 7 0;
+#X connect 7 0 1 0;
+#X connect 15 0 3 0;
+#X connect 15 1 4 0;
+#X connect 15 2 5 0;
+#X connect 15 3 10 0;
+#X connect 15 4 11 0;
+#X connect 15 5 12 0;
+#X connect 15 6 13 0;
+#X connect 15 7 14 0;
+#X connect 24 0 16 0;
+#X connect 24 1 17 0;
+#X connect 24 2 18 0;
+#X connect 24 3 19 0;
+#X connect 24 4 20 0;
+#X connect 24 5 21 0;
+#X connect 24 6 22 0;
+#X connect 24 7 23 0;

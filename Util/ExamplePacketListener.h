@@ -2,7 +2,7 @@
 #define EXAMPLEPACKETLISTENER_H
 
 #define ADDRESS "127.0.0.1"
-#define PORT 7000
+#define PORT 7001
 
 #include "../Osc/OscReceivedElements.h"
 #include "../Osc/OscPacketListener.h"

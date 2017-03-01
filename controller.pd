@@ -1,0 +1,163 @@
+#N canvas 349 177 645 597 10;
+#X obj 15 251 route key abs;
+#X obj 15 396 tgl 25 0 empty empty empty 0 -6 0 8 -195568 -1 -1 0 1
+;
+#X obj 45 396 tgl 25 0 empty empty empty 0 -6 0 8 -195568 -1 -1 0 1
+;
+#X obj 75 396 tgl 25 0 empty empty empty 0 -6 0 8 -195568 -1 -1 0 1
+;
+#X obj 105 396 tgl 25 0 empty empty empty 0 -6 0 8 -195568 -1 -1 0
+1;
+#X obj 135 396 tgl 25 0 empty empty empty 0 -6 0 8 -195568 -1 -1 0
+1;
+#X obj 165 396 tgl 25 0 empty empty empty 0 -6 0 8 -195568 -1 -1 0
+1;
+#X obj 195 396 tgl 25 0 empty empty empty 0 -6 0 8 -195568 -1 -1 0
+1;
+#X obj 225 396 tgl 25 0 empty empty empty 0 -6 0 8 -195568 -1 -1 0
+1;
+#X obj 255 396 tgl 25 0 empty empty empty 0 -6 0 8 -195568 -1 -1 0
+1;
+#X obj 285 396 tgl 25 0 empty empty empty 0 -6 0 8 -195568 -1 -1 0
+1;
+#X obj 315 396 tgl 25 0 empty empty empty 0 -6 0 8 -195568 -1 -1 0
+1;
+#X obj 345 396 tgl 25 0 empty empty empty 0 -6 0 8 -195568 -1 -1 0
+1;
+#X floatatom 52 313 6 0 0 0 - - -;
+#X floatatom 102 313 6 0 0 0 - - -;
+#X floatatom 152 313 6 0 0 0 - - -;
+#X floatatom 202 313 6 0 0 0 - - -;
+#X floatatom 252 313 6 0 0 0 - - -;
+#X msg 48 152 close;
+#X msg 15 20 print;
+#X obj 52 292 route abs_x abs_y abs_z abs_rz hatswitch;
+#X obj 15 223 hid;
+#X text 81 77 Select your controller based on its value in the PD console.
+;
+#X text 89 106 Begin polling HID. This is the sample rate for control
+input. It could by synchronized with melees frame lag.;
+#X obj 15 354 route btn_0 btn_1 btn_2 btn_3 btn_4 btn_5 btn_6 btn_7
+btn_8 btn_9 btn_10 btn_11 btn_12 btn_13 btn_14 btn_15;
+#X obj 375 396 tgl 25 0 empty empty empty 0 -6 0 8 -195568 -1 -1 0
+1;
+#X obj 405 396 tgl 25 0 empty empty empty 0 -6 0 8 -195568 -1 -1 0
+1;
+#X obj 435 396 tgl 25 0 empty empty empty 0 -6 0 8 -195568 -1 -1 0
+1;
+#X obj 465 396 tgl 25 0 empty empty empty 0 -6 0 8 -195568 -1 -1 0
+1;
+#X text 13 423 All of the button presses should be represented here.
+;
+#X text 62 12 The print message shows all the available devices in
+the PD console. If your controller doesn't show up \, make sure the
+controller is plugged before you start PD.;
+#X text 322 304 The joystick and c stick should be here along with
+an eight value representation of the d pad.;
+#X obj 705 248 route key abs;
+#X obj 705 393 tgl 25 0 empty empty empty 0 -6 0 8 -195568 -1 -1 0
+1;
+#X obj 735 393 tgl 25 0 empty empty empty 0 -6 0 8 -195568 -1 -1 0
+1;
+#X obj 765 393 tgl 25 0 empty empty empty 0 -6 0 8 -195568 -1 -1 0
+1;
+#X obj 795 393 tgl 25 0 empty empty empty 0 -6 0 8 -195568 -1 -1 0
+1;
+#X obj 825 393 tgl 25 0 empty empty empty 0 -6 0 8 -195568 -1 -1 0
+1;
+#X obj 855 393 tgl 25 0 empty empty empty 0 -6 0 8 -195568 -1 -1 0
+1;
+#X obj 885 393 tgl 25 0 empty empty empty 0 -6 0 8 -195568 -1 -1 0
+1;
+#X obj 915 393 tgl 25 0 empty empty empty 0 -6 0 8 -195568 -1 -1 0
+1;
+#X obj 945 393 tgl 25 0 empty empty empty 0 -6 0 8 -195568 -1 -1 0
+1;
+#X obj 975 393 tgl 25 0 empty empty empty 0 -6 0 8 -195568 -1 -1 0
+1;
+#X obj 1005 393 tgl 25 0 empty empty empty 0 -6 0 8 -195568 -1 -1 0
+1;
+#X obj 1035 393 tgl 25 0 empty empty empty 0 -6 0 8 -195568 -1 -1 0
+1;
+#X floatatom 742 310 6 0 0 0 - - -;
+#X floatatom 792 310 6 0 0 0 - - -;
+#X floatatom 842 310 6 0 0 0 - - -;
+#X floatatom 892 310 6 0 0 0 - - -;
+#X floatatom 942 310 6 0 0 0 - - -;
+#X msg 731 108 poll 1;
+#X msg 738 149 close;
+#X msg 705 17 print;
+#X obj 742 289 route abs_x abs_y abs_z abs_rz hatswitch;
+#X obj 705 220 hid;
+#X obj 705 351 route btn_0 btn_1 btn_2 btn_3 btn_4 btn_5 btn_6 btn_7
+btn_8 btn_9 btn_10 btn_11 btn_12 btn_13 btn_14 btn_15;
+#X obj 1065 393 tgl 25 0 empty empty empty 0 -6 0 8 -195568 -1 -1 0
+1;
+#X obj 1095 393 tgl 25 0 empty empty empty 0 -6 0 8 -195568 -1 -1 0
+1;
+#X obj 1125 393 tgl 25 0 empty empty empty 0 -6 0 8 -195568 -1 -1 0
+1;
+#X obj 1155 393 tgl 25 0 empty empty empty 0 -6 0 8 -195568 -1 -1 0
+1;
+#X text 16 465 General note: I have tried using two controllers simultaneously.
+It works fine with me using a logitech controller and a ps3 controller
+both connected through usb.;
+#X msg 27 80 open 6;
+#X msg 41 111 poll 1;
+#X msg 717 77 open 7;
+#X connect 0 0 24 0;
+#X connect 0 1 20 0;
+#X connect 18 0 21 0;
+#X connect 19 0 21 0;
+#X connect 20 0 13 0;
+#X connect 20 1 14 0;
+#X connect 20 2 15 0;
+#X connect 20 3 16 0;
+#X connect 20 4 17 0;
+#X connect 21 0 0 0;
+#X connect 24 0 1 0;
+#X connect 24 1 2 0;
+#X connect 24 2 3 0;
+#X connect 24 3 4 0;
+#X connect 24 4 5 0;
+#X connect 24 5 6 0;
+#X connect 24 6 7 0;
+#X connect 24 7 8 0;
+#X connect 24 8 9 0;
+#X connect 24 9 10 0;
+#X connect 24 10 11 0;
+#X connect 24 11 12 0;
+#X connect 24 12 25 0;
+#X connect 24 13 26 0;
+#X connect 24 14 27 0;
+#X connect 24 15 28 0;
+#X connect 32 0 55 0;
+#X connect 32 1 53 0;
+#X connect 50 0 54 0;
+#X connect 51 0 54 0;
+#X connect 52 0 54 0;
+#X connect 53 0 45 0;
+#X connect 53 1 46 0;
+#X connect 53 2 47 0;
+#X connect 53 3 48 0;
+#X connect 53 4 49 0;
+#X connect 54 0 32 0;
+#X connect 55 0 33 0;
+#X connect 55 1 34 0;
+#X connect 55 2 35 0;
+#X connect 55 3 36 0;
+#X connect 55 4 37 0;
+#X connect 55 5 38 0;
+#X connect 55 6 39 0;
+#X connect 55 7 40 0;
+#X connect 55 8 41 0;
+#X connect 55 9 42 0;
+#X connect 55 10 43 0;
+#X connect 55 11 44 0;
+#X connect 55 12 56 0;
+#X connect 55 13 57 0;
+#X connect 55 14 58 0;
+#X connect 55 15 59 0;
+#X connect 61 0 21 0;
+#X connect 62 0 21 0;
+#X connect 63 0 54 0;

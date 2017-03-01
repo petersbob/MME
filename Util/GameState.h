@@ -2,7 +2,7 @@
 #define GAMESTATE_H
 
 #define ADDRESS "127.0.0.1"
-#define PORT 7000
+#define PORT 7001
 
 #define OUTPUT_BUFFER_SIZE 2014
 
