@@ -1,0 +1,2 @@
+melee==0.0.63
+python-osc==1.6.3
