@@ -4,6 +4,11 @@ import argparse
 import signal
 import sys
 
+# osc
+from pythonosc import osc_message_builder
+from pythonosc import osc_bundle_builder
+from pythonosc import udp_client
+
 #This example program demonstrates how to use the Melee API to run dolphin programatically,
 #   setup controllers, and send button presses over to dolphin
 
@@ -15,6 +20,8 @@ def check_port(value):
     return ivalue
 
 chain = None
+
+
 
 parser = argparse.ArgumentParser(description='Example of libmelee in action')
 parser.add_argument('--port', '-p', type=check_port,
@@ -30,6 +37,10 @@ parser.add_argument('--debug', '-d', action='store_true',
                     help='Debug mode. Creates a CSV of all game state')
 parser.add_argument('--framerecord', '-r', default=False, action='store_true',
                     help='Records frame data from the match, stores into framedata.csv')
+parser.add_argument("--ip", default="127.0.0.1",
+                    help="The ip of the OSC server")
+parser.add_argument('--oscPort', type=int, default=5005,
+                    help="The port of the OSC server is listening on")
 
 args = parser.parse_args()
 
@@ -78,6 +89,9 @@ dolphin.run(render=True)
 #   dolphin will hang waiting for input and never receive it
 controller.connect()
 
+#Osc client
+client = udp_client.SimpleUDPClient(args.ip, args.oscPort)
+
 #Main loop
 while True:
     #"step" to the next frame
@@ -92,10 +106,23 @@ while True:
         #XXX: This is where your AI does all of its stuff!
         #This line will get hit once per frame, so here is where you read
         #   in the gamestate and decide what buttons to push on the controller
-        if args.framerecord:
-            melee.techskill.upsmashes(ai_state=gamestate.ai_state, controller=controller)
-        else:
-            melee.techskill.multishine(ai_state=gamestate.ai_state, controller=controller)
+        bundle = osc_bundle_builder.OscBundleBuilder(
+            osc_bundle_builder.IMMEDIATELY)
+        msg = osc_message_builder.OscMessageBuilder(address="/player_one_info")
+        msg.add_arg("player_y")
+        msg.add_arg(gamestate.player[1].y)
+        # Add 4 messages in the bundle, each with more arguments.
+        bundle.add_content(msg.build())
+
+        sub_bundle = bundle.build()
+        # Now add the same bundle inside itself.
+        bundle.add_content(sub_bundle)
+        # The bundle has 5 elements in total now.
+
+        bundle = bundle.build()
+
+        client.send(bundle);
+        
     #If we're at the character select screen, choose our character
     elif gamestate.menu_state == melee.enums.Menu.CHARACTER_SELECT:
         melee.menuhelper.choosecharacter(character=melee.enums.Character.FOX,
