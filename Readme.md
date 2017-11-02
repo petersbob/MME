@@ -1,5 +1,6 @@
-# Update: 
-###This repository is an old version of the Musical Melee project.
+# Update:
+
+### This repository is an old version of the Musical Melee project.
 
 The original SmashBot project has been rewritten in Python and along with that is a new Python API [libmelee](https://github.com/altf4/libmelee).
 
@@ -10,9 +11,9 @@ The new repository can be found [here](https://github.com/petersbob/MusicalMelee
 
 #Musical Melee
 
-##Creating music with Super Smash Brothers Melee
+## Creating music with Super Smash Brothers Melee
 
-##What does it do?
+## What does it do?
 
 This project allows you to customize the sounds coming out of Super Smash Brothers Melee. Information about what is happening on screen is pulled out from memory.
 
@@ -26,7 +27,7 @@ This data includes:
 
 And much more.
 
-###How was it built?
+### How was it built?
 
 It is built using C++ and [ChucK](http://chuck.cs.princeton.edu)
 
@@ -36,7 +37,7 @@ The two languages communicate over the [Open Sound Control (OSC)] (http://openso
 
 It was built off of the work done by github user altf4 on his [SmashBot] (https://github.com/altf4/SmashBot) AI project.
 
-###What do I need to use it?
+### What do I need to use it?
 
 + A mac or linux computer. We hope to be able to run on Windows sometime in the future.
 + ChucK, a free audio programming language.
@@ -64,7 +65,7 @@ If you are having trouble installing or looking for an alternative method, check
 + Enable cheats in Dolphin. Config -> General -> Enable Cheats
 + Lastly, you may want a gamecube controller and an adapter for use on your computer.
 
-###I have that stuff, now what?
+### I have that stuff, now what?
 
 + Download or clone this project to your computer. 
 
