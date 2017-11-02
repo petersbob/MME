@@ -1,5 +1,6 @@
 # Update: 
-###This repository is an old version of the Musical Melee project. 
+###This repository is an old version of the Musical Melee project.
+
 The original SmashBot project has been rewritten in Python and along with that is a new Python API [libmelee](https://github.com/altf4/libmelee).
 
 Since this project was forked from the old C++ version of SmashBot, we have also moved to Python and are using the new Python API.
