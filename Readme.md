@@ -9,7 +9,7 @@ Since this project was forked from the old C++ version of SmashBot, we have also
 The new repository can be found [here](https://github.com/petersbob/MusicalMelee).
 
 
-#Musical Melee
+# Musical Melee
 
 ## Creating music with Super Smash Brothers Melee
 
